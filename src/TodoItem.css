@@ -1,0 +1,35 @@
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+.container_item{
+    display: flex;
+    justify-content:space-around;
+    border-bottom: 1px solid  var(--dark-color);
+    min-height: 35px;
+    margin-top:15px;
+    margin-bottom:15px;
+    transition: transform, color, background 0.3s;
+}
+.container_item:hover{
+   transform: scale(1.2);
+   border-bottom: transparent;
+   background: var(--dark-color);
+   color: var(--ligth-color);
+}
+
+.container_item p{
+    width: 33%;
+    text-align: center;
+    color: var(--dark-color);
+    color: inherit;
+    font-size: 1.5rem;
+}
+
+.container_item .todoComplete{
+    text-decoration: line-through;
+    color: var(--soft-color);
+}

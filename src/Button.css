@@ -1,0 +1,22 @@
+.container-btn{
+display:flex;
+}
+.btn{
+margin: 0 auto;
+width:70px;
+height:70px;
+border-radius: 50%;
+border: transparent;
+background: var(--ligth-color);
+color: var(--dark-color);
+cursor: pointer;
+transition: color, background, .2s;
+box-shadow: 6px 6px 5px 2px rgba(7,34,39,0.35);
+
+}
+
+.btn:hover{
+    border-bottom: 1px solid var(--dark-color);
+    color: var(--ligth-color);
+    background: var(--soft-color);
+}

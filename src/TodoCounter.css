@@ -1,0 +1,5 @@
+.text-todo-completed{
+    margin-top: 10px;
+    text-align: center;
+    color: var(--soft-color);
+}

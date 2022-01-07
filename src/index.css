@@ -1,5 +1,19 @@
-body {
+:root{
+  --dark-color: #072227;
+  --medium-color: #35858B;
+  --soft-color: #4FBDBA;
+  --ligth-color: #AEFEFF;
+}
+
+*, html{
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 62.5%
+}
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
