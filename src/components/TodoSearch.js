@@ -2,6 +2,7 @@ import React from "react";
 import "./TodoSearch.css"
 
 
+
 const TodoSearch = ({searchs, setSearchs})=>{
 
     const searchTodos = (e)=>{
@@ -12,7 +13,7 @@ const TodoSearch = ({searchs, setSearchs})=>{
         <React.Fragment>
             <div className="container_search">
                 <input className="search" 
-                 placeholder="Buscar Todo"
+                 placeholder={` Buscar Todo`}
                  value={searchs} 
                  onChange={searchTodos}
                  />

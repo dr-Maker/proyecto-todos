@@ -1,4 +1,6 @@
 import React from "react";
+import { HiCheckCircle } from "react-icons/hi";
+import { FaTrashAlt} from "react-icons/fa";
 import './TodoItem.css';
 
 
@@ -9,16 +11,16 @@ const TodoItem = (props)=>{
         <React.Fragment>
             <li>
                 <div className="container_item">
-                    <button text="button"
+                    <button  className="btnIcon" text="button"
                     onClick={props.onComplete}
                     >
-                        check
+                    <HiCheckCircle  size={"25px"}/>
                     </button>
                     <p className={todo.completed === true ? "todoComplete": "todoUncomplete"}>{todo.text}</p>
                     
-                    <button text="button"
+                    <button text="button"  className="btnIcon"
                     onClick={props.onDelete}
-                    >papelera</button>
+                    ><FaTrashAlt  size={"25px"}/></button>
                 </div>
             </li>
         </React.Fragment>

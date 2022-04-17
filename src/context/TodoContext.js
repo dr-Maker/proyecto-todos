@@ -2,14 +2,14 @@ import React from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const TodoContext = React.createContext();
+
 const TodoProvider = (props)=>{
 
     const {
         item: todos,
         saveItem: saveTodos,
         loading,
-        error,
-    } = useLocalStorage("TODO_V1", []);
+        error} = useLocalStorage("TODO_V1", []);
 
 
     const [searchValue, setSearchValue] = React.useState('');

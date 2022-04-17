@@ -6,39 +6,37 @@ function useLocalStorage(itemName, initialValue){
     const [ item, setItem ] = useState(initialValue);
     const [ loading, setLoading ] = useState(true);
 
-    useEffect(()=>{
-        try{
-            const localStorageItem = localStorage.getItem(itemName);
-            let parseItem;
+    useEffect(() => {
 
-            if(!localStorageItem){
-                localStorage.setItem(itemName, JSON.stringify(initialValue));
-                parseItem = initialValue;
-            }else{
-                parseItem = JSON.parse(localStorageItem);
-            }
-
-            setItem(parseItem);
-            setLoading(false);
-
+        setTimeout(() => {
+            try {
+                const localStorageItem = localStorage.getItem(itemName);
+                let parsedItem;
+                
+                if (!localStorageItem) {
+                  localStorage.setItem(itemName, JSON.stringify(initialValue));
+                  parsedItem = initialValue;
+                } else {
+                  parsedItem = JSON.parse(localStorageItem);
+                }
+        
+                setItem(parsedItem);
+                setLoading(false);
+              } catch(error) {
+                setError(error);
+              }
+        }, 3000);
+      });
+      
+      const saveItem = (newItem) => {
+        try {
+          const stringifiedItem = JSON.stringify(newItem);
+          localStorage.setItem(itemName, stringifiedItem);
+          setItem(newItem);
+        } catch(error) {
+          setError(error);
         }
-        catch(e){
-            setError(e);
-        }
-    
-    },[])
-
-
-    const saveItem = (newItem)=>{
-        try{
-            const stringFieldItem = JSON.stringify(newItem);
-            localStorage.setItem(newItem, stringFieldItem);
-            setItem(newItem)
-        }
-        catch(e){
-            setError(e);
-        }
-    }
+      };
 
     return {
         item,
