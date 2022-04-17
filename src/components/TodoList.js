@@ -1,6 +1,6 @@
 import React from "react";
 import {TodoItem} from "./TodoItem";
-import { CreateTodoButton } from './CreateTodoButton';
+
 import "./TodoList.css"
 
 const TodoList = (props)=>{
@@ -18,7 +18,7 @@ const TodoList = (props)=>{
                         } 
                     </ul>
                 </div>
-                <CreateTodoButton />
+     
             </div>
         </React.Fragment>
     )

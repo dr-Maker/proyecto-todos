@@ -1,79 +1,37 @@
-import React from "react";
-import { TodoCounter } from "./TodoCounter";
-import { TodoSearch } from "./TodoSearch";
-import { TodoList } from './TodoList';
-import { useState } from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "./context/TodoContext";
+import { TodoCounter } from "./components/TodoCounter";
+import { TodoSearch } from "./components/TodoSearch";
+import { TodoList } from './components/TodoList';
+import { CreateTodoButton } from './components/CreateTodoButton';
+import { Modal } from './components/Modal';
+import { TodoForm } from "./components/TodoForm";
 
 import './App.css';
 
-const todosDefault = [
-  {
-    text: "hacer aseo",
-    completed: false
-  },
-  {
-    text: "pruebas Platzi",
-    completed: false
-  },
-  {
-    text: "Tomar Desayuno",
-    completed: true
-  },
-  {
-    text: "Ver el regalo de navidad",
-    completed: false
-  },
-  {
-    text: "Ir al supermercado",
-    completed: true
-  }
-]
-
 function App() {
 
-  const [todos , setTodos] = useState(todosDefault);
-  const [searchs, setSearchs] = useState("");
+  const {completedTodos, searchValue, setSearchValue , totalTodos, completeTodo, deleteTodo, searchedTodos, setOpenModal, openModal} = useContext(TodoContext);
 
-  const completedTodos = todos.filter(todo => todo.completed === true).length;
-  const totalTodos= todos.length;
-
-  let searchTodos = [];
-
-  !searchs.length >= 1 
-  
-  ? searchTodos = todos 
-  
-  : searchTodos = todos.filter(todo =>{
-    const todoText = todo.text.toLowerCase();
-    const searchText = searchs.toLowerCase();
-    return todoText.includes(searchText);
-  });
-
-  const completeTodo = (text)=>{
-    const todoIndex = todos.findIndex( todo => todo.text === text );
-    const newTodos = [...todos];
-    newTodos[todoIndex].completed = true;
-    setTodos(newTodos);
-  };
-
-  const deleteTodo = (text)=>{
-    const todoIndex = todos.findIndex( todo => todo.text === text );
-    const newTodos = [...todos];
-    newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
-  };
 
   return (
     <React.Fragment>
       <div className="container_head">
         <h1 className="title">TODO APP</h1>
       <TodoCounter completedTodos={completedTodos} totalTodos={totalTodos}/>
-      <TodoSearch searchs={searchs} setSearchs={setSearchs}/>
+
+      <TodoSearch searchs={searchValue} setSearchs={setSearchValue}/>
       </div>
 
-      <TodoList todos={searchTodos} onComplete={completeTodo} onDelete={deleteTodo} />
+      <TodoList todos={searchedTodos} onComplete={completeTodo} onDelete={deleteTodo} />
 
+      {!!openModal && (
+        <Modal>
+          <TodoForm />
+        </Modal>
+      )}
 
+      <CreateTodoButton setOpenModal={setOpenModal}/>
 
     </React.Fragment>
   );

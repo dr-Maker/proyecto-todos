@@ -2,7 +2,6 @@ import React from "react";
 import "./TodoSearch.css"
 
 
-
 const TodoSearch = ({searchs, setSearchs})=>{
 
     const searchTodos = (e)=>{
